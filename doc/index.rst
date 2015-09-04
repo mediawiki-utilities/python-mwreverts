@@ -1,6 +1,6 @@
 MediaWiki Reverts
 =================
-This library provides a set of utilities for detecting reverts (see :class:`mreverts.Detector` and :func:`mwreverts.detect`) and identifying
+This library provides a set of utilities for detecting reverts (see :class:`mwreverts.Detector` and :func:`mwreverts.detect`) and identifying
 the reverted status of edits to a MediaWiki wiki.
 
 :Installation: ``pip install mwreverts``

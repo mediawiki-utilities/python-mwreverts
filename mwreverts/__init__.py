@@ -21,7 +21,8 @@ revisioned content.
 """
 from .detector import Detector, Revert
 from .functions import detect
+from .dummy_checksum import DummyChecksum
 
 __version__ = "0.0.1"
 
-__all__ = [Detector, Revert, detect]
+__all__ = [Detector, Revert, detect, DummyChecksum]

@@ -11,3 +11,5 @@ pairs and returns an iterator of :class:`mwreverts.Revert`.  :class:`mwreverts.D
   :members:
 
 .. autoclass:: mwreverts.Revert
+
+.. autoclass:: mwreverts.DummyChecksum

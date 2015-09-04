@@ -6,7 +6,7 @@ from ..historical_dict import HistoricalDict
 def test_historical_dict():
     d = HistoricalDict(3)
 
-    assert not "foo" in d
+    assert "foo" not in d
 
     expectorate = d.insert("foo", "bar1")
     eq_(expectorate, None)

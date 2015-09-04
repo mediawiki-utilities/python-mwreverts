@@ -1,7 +1,6 @@
 from collections import deque
 
 import jsonable
-from jsonable.instance import simple_repr
 
 
 class HistoricalDict(jsonable.Type, dict):

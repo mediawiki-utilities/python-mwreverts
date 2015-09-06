@@ -70,7 +70,7 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
         radius : int
             a positive integer indicating the maximum number of revisions
             that can be reverted
-        before : :class:`mw.Timestamp`
+        before : :class:`mwtypes.Timestamp`
             if set, limits the search for *reverting* revisions to those which
             were saved before this timestamp
         window : int

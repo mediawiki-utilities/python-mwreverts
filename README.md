@@ -1,4 +1,4 @@
-# MediaWiki Reverts
+# MediaWiki reverts
 
 This library provides a set of utilities for detecting reverting activity in
 MediaWiki projects.
@@ -26,3 +26,6 @@ MediaWiki projects.
 
 ## Author
 * Aaron Halfaker -- https://github.com/halfak
+
+## See also 
+* https://meta.wikimedia.org/wiki/Research:Revert

@@ -1,4 +1,4 @@
-# MediaWiki Revert Analysis
+# MediaWiki Reverts
 
 This library provides a set of utilities for detecting reverting activity in
 MediaWiki projects.

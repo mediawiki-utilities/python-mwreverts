@@ -14,7 +14,7 @@ def requirements(fname):
 
 setup(
     name="mwreverts",
-    version="0.0.4",  # Change in mwreverts/__init__.py
+    version="0.0.5",  # Change in mwreverts/__init__.py
     author="Aaron Halfaker",
     author_email="aaron.halfaker@gmail.com",
     url="http://github.com/mediawiki-utilities/python-mwreverts",

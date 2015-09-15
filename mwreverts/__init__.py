@@ -23,6 +23,6 @@ from .detector import Detector, Revert
 from .functions import detect
 from .dummy_checksum import DummyChecksum
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 __all__ = [Detector, Revert, detect, DummyChecksum]

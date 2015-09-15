@@ -119,12 +119,6 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
     page_id = int(page_id) if page_id is not None else None
     before = Timestamp(before) if before is not None else None
 
-    if window is not None and before is None:
-        after = Timestamp(current_rev['timestamp']) - window
-        before = Timestamp(current_rev['timestamp']) + window
-    else:
-        after = None
-
     rvprop = set(rvprop) if rvprop is not None else set()
 
     # If we don't have the page_id, we're going to need to look them up
@@ -137,7 +131,6 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
         rev_id,
         page_id,
         n=radius + 1,
-        timestamp=after,
         rvprop={'ids', 'timestamp', 'sha1'} | rvprop
     ))
 
@@ -148,6 +141,9 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
         current_and_past_revs[-1],  # Current rev is the last one returned
         current_and_past_revs[:-1]  # The rest are past revs
     )
+
+    if window is not None and before is None:
+        before = Timestamp(current_rev['timestamp']) + window
 
     # Load future revisions
     future_revs = list(n_edits_after(
@@ -170,14 +166,14 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
 
     reverting, reverted, reverted_to = None, None, None
     for revert in detect(checksum_revisions, radius=radius):
-        if revert.reverting['revid'] == rev_id:
+        if reverting is None and revert.reverting['revid'] == rev_id:
             reverting = revert
 
-        if reverted is None:
-            if rev_id in {rev['revid'] for rev in revert.reverteds}:
-                reverted = revert
+        if reverted is None and \
+           rev_id in {rev['revid'] for rev in revert.reverteds}:
+            reverted = revert
 
-        if revert.reverted_to['revid'] == rev_id:
+        if reverted_to is None and revert.reverted_to['revid'] == rev_id:
             reverted_to = revert
 
     return reverting, reverted, reverted_to

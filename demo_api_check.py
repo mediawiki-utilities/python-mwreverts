@@ -1,18 +1,35 @@
 import mwapi
+
 import mwreverts.api
 
 session = mwapi.Session("https://en.wikipedia.org")
 
 
-def print_revert(revert):
+def format_revert(revert):
     if revert is None:
-        print(None)
+        return ""
     else:
-        print(revert.reverting['revid'],
-              [r['revid'] for r in revert.reverteds],
-              revert.reverted_to['revid'])
+        return " ".join([str(revert.reverting['revid']),
+                         str([r['revid'] for r in revert.reverteds]),
+                         str(revert.reverted_to['revid'])])
 
 reverting, reverted, reverted_to = mwreverts.api.check(session, 679778587)
-print_revert(reverting)
-print_revert(reverted)
-print_revert(reverted_to)
+print("reverting:", format_revert(reverting))
+print("reverted:", format_revert(reverted))
+print("reverted_to:", format_revert(reverted_to))
+
+print("---------------")
+
+reverting, reverted, reverted_to = \
+    mwreverts.api.check(session, reverted.reverting['revid'])
+print("reverting:", format_revert(reverting))
+print("reverted:", format_revert(reverted))
+print("reverted_to:", format_revert(reverted_to))
+
+print("---------------")
+
+reverting, reverted, reverted_to = \
+    mwreverts.api.check(session, reverting.reverted_to['revid'])
+print("reverting:", format_revert(reverting))
+print("reverted:", format_revert(reverted))
+print("reverted_to:", format_revert(reverted_to))

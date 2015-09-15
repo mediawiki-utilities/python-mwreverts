@@ -135,7 +135,8 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
     ))
 
     if len(current_and_past_revs) < 1:
-        raise KeyError("Revision {0} not found.".format(rev_id))
+        raise KeyError("Revision {0} not found in page {1}."
+                       .format(rev_id, page_id))
 
     current_rev, past_revs = (
         current_and_past_revs[-1],  # Current rev is the last one returned

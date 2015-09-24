@@ -101,7 +101,8 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
         ...               [r['revid'] for r in revert.reverteds],
         ...               revert.reverted_to['revid'])
         ...
-        >>> reverting, reverted, reverted_to = mwreverts.api.check(session, 679778587)
+        >>> reverting, reverted, reverted_to = \
+        ...     mwreverts.api.check(session, 679778587)
         >>> print_revert(reverting)
         None
         >>> print_revert(reverted)

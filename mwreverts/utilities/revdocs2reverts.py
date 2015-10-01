@@ -2,7 +2,8 @@ r"""
 ``$ mwpersistence revdocs2reverts -h``
 ::
 
-    Extracts reverts from an XML dump.
+    Extracts reverts from a page-partitioned sequence of JSON revision
+    documents.
 
     Usage:
         revdocs2reverts (-h|--help)

@@ -143,6 +143,9 @@ def check(session, rev_id, page_id=None, radius=defaults.RADIUS,
         current_and_past_revs[-1],  # Current rev is the last one returned
         current_and_past_revs[:-1]  # The rest are past revs
     )
+    if current_rev['revid'] != rev_id:
+        raise KeyError("Revision {0} not found in page {1}."
+                       .format(rev_id, page_id))
 
     if window is not None and before is None:
         before = Timestamp(current_rev['timestamp']) + window

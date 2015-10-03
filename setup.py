@@ -14,7 +14,7 @@ def requirements(fname):
 
 setup(
     name="mwreverts",
-    version="0.0.5",  # Change in mwreverts/__init__.py
+    version="0.0.6",  # Change in mwreverts/__init__.py
     author="Aaron Halfaker",
     author_email="aaron.halfaker@gmail.com",
     url="http://github.com/mediawiki-utilities/python-mwreverts",
@@ -23,5 +23,6 @@ setup(
     description="A set of utilities for detecting reverts in MediaWiki " +
                 "revisions.",
     long_description=read("README.md"),
-    install_requires=requirements("requirements.txt")
+    install_requires=requirements("requirements.txt"),
+    setup_requires=['nose>=1.0', 'coverage']
 )

@@ -15,10 +15,8 @@ from .functions import detect
 
 
 def n_edits_after(session, rev_id, page_id, n, timestamp=None, rvprop=None):
-    rvprop = set(rvprop or [])
-    rvprop.add('timestamp')
     doc = session.get(action='query', prop='revisions', pageids=page_id,
-                      rvstartid=rev_id, rvdir='newer',
+                      rvstartid=rev_id, rvend=timestamp, rvdir='newer',
                       rvlimit=n, rvprop=rvprop)
 
     page_doc = list(doc['query']['pages'].values())[0]
@@ -27,16 +25,12 @@ def n_edits_after(session, rev_id, page_id, n, timestamp=None, rvprop=None):
         del page_doc['revisions']
     for revision_doc in revisions:
         revision_doc['page'] = page_doc
-        if timestamp is None or \
-           Timestamp(revision_doc['timestamp']) < timestamp:
-            yield revision_doc
+        yield revision_doc
 
 
 def n_edits_before(session, rev_id, page_id, n, timestamp=None, rvprop=None):
-    rvprop = set(rvprop or [])
-    rvprop.add('timestamp')
     doc = session.get(action='query', prop='revisions', pageids=page_id,
-                      rvstartid=rev_id, rvdir='older',
+                      rvstartid=rev_id, rvend=timestamp, rvdir='older',
                       rvlimit=n, rvprop=rvprop)
 
     page_doc = list(doc['query']['pages'].values())[0]
@@ -46,9 +40,7 @@ def n_edits_before(session, rev_id, page_id, n, timestamp=None, rvprop=None):
         del page_doc['revisions']
     for revision_doc in revisions:
         revision_doc['page'] = page_doc
-        if timestamp is None or \
-           Timestamp(revision_doc['timestamp']) < timestamp:
-            yield revision_doc
+        yield revision_doc
 
 
 def get_page_id(session, rev_id):

@@ -3,6 +3,8 @@ This module provides a set of convenience function for detecting revert
 status via a MediaWiki API.
 
 .. autofunction:: check
+
+.. autofunction:: check_deleted
 """
 
 from itertools import chain

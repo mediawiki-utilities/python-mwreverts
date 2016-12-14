@@ -3,6 +3,8 @@ MediaWiki Reverts
 This library provides a set of utilities for detecting reverts (see :class:`mwreverts.Detector` and :func:`mwreverts.detect`) and identifying
 the reverted status of edits to a MediaWiki wiki.
 
+There's also revert status checking functions for the API (see :func:`mwreverts.api.check` and :func:`mwreverts.api.check_deleted`) and database (see :func:`mwreverts.db.check` and :func:`mwreverts.db.check_archive`)
+
 :Installation: ``pip install mwreverts``
 :Repository: https://github.com/mediawiki-utilities/python-mwreverts
 
@@ -15,6 +17,7 @@ Contents
 
    detection
    api
+   db
 
 Authors
 -------

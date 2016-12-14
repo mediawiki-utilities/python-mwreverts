@@ -3,12 +3,13 @@ This module provides a set of convenience function for detecting revert
 status via a mwdb database connection.
 
 .. autofunction:: check
+
+.. autofunction:: check_archive
 """
 import time
 from itertools import chain
 
 from mwtypes import Timestamp
-
 from sqlalchemy import and_
 
 from . import defaults
@@ -102,7 +103,7 @@ def check(schema, rev_id, page_id=None, radius=defaults.RADIUS,
         ...               [r['rev_id'] for r in revert.reverteds],
         ...               revert.reverted_to['rev_id'])
         ...
-        >>> reverting, reverted, reverted_to = \
+        >>> reverting, reverted, reverted_to = \\
         ...     mwreverts.db.check(schema, 679778587)
         >>> print_revert(reverting)
         None

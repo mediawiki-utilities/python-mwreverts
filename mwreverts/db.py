@@ -19,9 +19,9 @@ from .functions import detect
 
 def n_edits_after(schema, rev_id, page_id, n, before=None):
     if before is not None:
-        before_fmt = before.short_format()
+        before_fmt = bytes(before.short_format(), 'utf8')
     else:
-        before_fmt = Timestamp(time.time()).short_format()
+        before_fmt = bytes(Timestamp(time.time()).short_format(), 'utf8')
     with schema.transaction() as session:
         result = session.query(schema.revision).filter(
             and_(schema.revision.c.rev_page == page_id,
@@ -156,15 +156,15 @@ def check(schema, rev_id, page_id=None, radius=defaults.RADIUS,
 def n_archived_edits_after(schema, rev_id, namespace, title,
                            timestamp, n, before=None):
     if before is not None:
-        before_fmt = before.short_format()
+        before_fmt = bytes(before.short_format(), 'utf8')
     else:
-        before_fmt = Timestamp(time.time()).short_format()
+        before_fmt = bytes(Timestamp(time.time()).short_format(), 'utf8')
     with schema.transaction() as session:
         result = session.query(schema.archive).filter(
             and_(schema.archive.c.ar_namespace == namespace,
                  schema.archive.c.ar_title == title,
                  schema.archive.c.ar_rev_id > rev_id,
-                 schema.archive.c.ar_timestamp >= timestamp.short_format(),
+                 schema.archive.c.ar_timestamp >= bytes(timestamp.short_format(), 'utf8'),
                  schema.archive.c.ar_timestamp <= before_fmt)).order_by(
             schema.archive.c.ar_rev_id.asc()).limit(n)
 
@@ -178,7 +178,7 @@ def n_archived_edits_before(schema, rev_id, namespace, title,
         result = session.query(schema.archive).filter(
             and_(schema.archive.c.ar_namespace == namespace,
                  schema.archive.c.ar_title == title,
-                 schema.archive.c.ar_timestamp < timestamp.short_format(),
+                 schema.archive.c.ar_timestamp < bytes(timestamp.short_format(), 'utf8'),
                  schema.archive.c.ar_rev_id < rev_id)).order_by(
             schema.archive.c.ar_rev_id.desc()).limit(n)
 

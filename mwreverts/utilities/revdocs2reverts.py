@@ -37,6 +37,7 @@ import mwcli
 
 from .. import defaults
 from ..detector import Detector
+from ..dummy_checksum import DummyChecksum
 
 logger = logging.getLogger(__name__)
 
@@ -64,11 +65,11 @@ def revdocs2reverts(rev_docs, radius=defaults.RADIUS, use_sha1=False,
             Print dots and stuff
     """
 
-    page_rev_docs = groupby(rev_docs, lambda rd: rd['page'])
+    page_rev_docs = groupby(rev_docs, lambda rd: rd.get('page'))
 
     for page_doc, rev_docs in page_rev_docs:
         if verbose:
-            sys.stderr.write(page_doc['title'] + ": ")
+            sys.stderr.write(page_doc.get('title') + ": ")
             sys.stderr.flush()
 
         detector = Detector(radius=radius)
@@ -79,7 +80,7 @@ def revdocs2reverts(rev_docs, radius=defaults.RADIUS, use_sha1=False,
                 continue
 
             if use_sha1:
-                checksum = rev_doc['sha1']
+                checksum = rev_doc.get('sha1') or DummyChecksum()
             elif 'text' in rev_doc:
                 text_bytes = bytes(rev_doc['text'], 'utf8', 'replace')
                 checksum = hashlib.sha1(text_bytes).digest()

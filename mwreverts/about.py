@@ -1,5 +1,5 @@
 __name__ = "mwreverts"
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __author__ = "Aaron Halfaker"
 __author_email__ = "aaron.halfaker@gmail.com"
 __description__ = "A set of utilities for detecting reverts in MediaWiki " + \

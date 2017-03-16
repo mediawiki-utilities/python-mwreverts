@@ -22,6 +22,11 @@ setup(
     license=read("LICENSE"),
     description="A set of utilities for detecting reverts in MediaWiki " +
                 "revisions.",
+    entry_points={
+        'console_scripts': [
+            'mwreverts=mwreverts.mwreverts:main'
+        ],
+    },
     long_description=read("README.md"),
     install_requires=requirements("requirements.txt"),
     setup_requires=['nose>=1.0', 'coverage']

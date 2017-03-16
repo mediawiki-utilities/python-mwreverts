@@ -1,4 +1,4 @@
-r"""
+"""
 ``$ mwpersistence revdocs2reverts -h``
 ::
 

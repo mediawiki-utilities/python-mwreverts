@@ -13,11 +13,12 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    detection
    api
    db
+   utilities
 
 Authors
 -------

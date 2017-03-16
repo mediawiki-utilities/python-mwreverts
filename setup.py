@@ -1,6 +1,6 @@
 import os
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 about_path = os.path.join(os.path.dirname(__file__), "mwreverts/about.py")
 exec(compile(open(about_path).read(), about_path, "exec"))
@@ -22,7 +22,7 @@ setup(
     description=__description__,  # noqa
     url=__url__,  # noqa
     license=__license__,  # noqa
-    packages=["mwreverts"],
+    packages=find_packages(),
     entry_points={
         'console_scripts': [
             'mwreverts=mwreverts.mwreverts:main'

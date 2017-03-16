@@ -22,7 +22,9 @@ revisioned content.
 from .detector import Detector, Revert
 from .functions import detect
 from .dummy_checksum import DummyChecksum
+from .about import (__name__, __version__, __author__, __author_email__,
+                    __description__, __license__, __url__)
 
-__version__ = "0.1.1"
-
-__all__ = [Detector, Revert, detect, DummyChecksum]
+__all__ = [Detector, Revert, detect, DummyChecksum,
+           __name__, __version__, __author__, __author_email__,
+           __description__, __license__, __url__]

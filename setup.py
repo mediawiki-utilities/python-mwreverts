@@ -2,6 +2,9 @@ import os
 
 from setuptools import setup
 
+about_path = os.path.join(os.path.dirname(__file__), "mwreverts/about.py")
+exec(compile(open(about_path).read(), about_path, "exec"))
+
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -11,17 +14,15 @@ def requirements(fname):
     for line in open(os.path.join(os.path.dirname(__file__), fname)):
         yield line.strip()
 
-
 setup(
-    name="mwreverts",
-    version="0.1.1",  # Change in mwreverts/__init__.py
-    author="Aaron Halfaker",
-    author_email="aaron.halfaker@gmail.com",
-    url="http://github.com/mediawiki-utilities/python-mwreverts",
+    name=__name__,  # noqa
+    version=__version__,  # noqa
+    author=__author__,  # noqa
+    author_email=__author_email__,  # noqa
+    description=__description__,  # noqa
+    url=__url__,  # noqa
+    license=__license__,  # noqa
     packages=["mwreverts"],
-    license=read("LICENSE"),
-    description="A set of utilities for detecting reverts in MediaWiki " +
-                "revisions.",
     entry_points={
         'console_scripts': [
             'mwreverts=mwreverts.mwreverts:main'

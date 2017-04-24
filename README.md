@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.556790.svg)](https://doi.org/10.5281/zenodo.556790)
+
 # MediaWiki reverts
 
 This library provides a set of utilities for detecting reverting activity in
@@ -26,6 +28,9 @@ MediaWiki projects.
 
 ## Author
 * Aaron Halfaker -- https://github.com/halfak
+
+## Cite as
+Aaron Halfaker. (2017). mediawiki-utilities/python-mwreverts: v0.1.4 [Data set]. Zenodo. http://doi.org/10.5281/zenodo.556790
 
 ## See also 
 * https://meta.wikimedia.org/wiki/Research:Revert

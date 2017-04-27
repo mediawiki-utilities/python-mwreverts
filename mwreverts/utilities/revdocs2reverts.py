@@ -19,6 +19,8 @@
                             reference. [default: 15]
         --use-sha1          Use the sha1 field even if a text field is
                             available.
+        --resort            Re-sort the revisions within a page by timestamp
+                            and rev_id.
         --threads=<num>     If a collection of files are provided, how many
                             processor threads? [default: <cpu_count>]
         --output=<path>     Write output to a directory with one output file
@@ -45,11 +47,12 @@ logger = logging.getLogger(__name__)
 def process_args(args):
 
     return {'radius': int(args['--radius']),
-            'use_sha1': bool(args['--use-sha1'])}
+            'use_sha1': bool(args['--use-sha1']),
+            'resort': bool(args['--resort'])}
 
 
 def revdocs2reverts(rev_docs, radius=defaults.RADIUS, use_sha1=False,
-                    verbose=False):
+                    resort=False, verbose=False):
     """
     Converts a sequence of page-partitioned revision documents into a sequence
     of reverts.
@@ -61,6 +64,8 @@ def revdocs2reverts(rev_docs, radius=defaults.RADIUS, use_sha1=False,
             The maximum number of revisions that a revert can reference.
         use_sha1 : `bool`
             Use the sha1 field as the checksum for comparison.
+        resort : `bool`
+            If True, re-sort the revisions of each page.
         verbose : `bool`
             Print dots and stuff
     """
@@ -71,6 +76,13 @@ def revdocs2reverts(rev_docs, radius=defaults.RADIUS, use_sha1=False,
         if verbose:
             sys.stderr.write(page_doc.get('title') + ": ")
             sys.stderr.flush()
+
+        if resort:
+            if verbose:
+                sys.stderr.write("(sorting) ")
+                sys.stderr.flush()
+            rev_docs = sorted(
+                rev_docs, key=lambda r: (r.get('timestamp'), r.get('id')))
 
         detector = Detector(radius=radius)
         for rev_doc in rev_docs:

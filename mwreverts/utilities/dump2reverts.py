@@ -18,6 +18,8 @@ r"""
                             reference. [default: 15]
         --use-sha1          Use the sha1 field even if a text field is
                             available.
+        --resort            Re-sort the revisions within a page by timestamp
+                            and rev_id.
         --threads=<num>     If a collection of files are provided, how many
                             processor threads? [default: <cpu_count>]
         --output=<path>     Write output to a directory with one output file

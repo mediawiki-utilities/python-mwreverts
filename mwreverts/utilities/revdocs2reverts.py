@@ -7,7 +7,7 @@
 
     Usage:
         revdocs2reverts (-h|--help)
-        revdocs2reverts [<input-file>...] [--radius=<revs>] [--use-sha1]
+        revdocs2reverts [<input-file>...] [--radius=<revs>] [--use-sha1] [--resort]
                         [--threads=<num>] [--output=<path>] [--compress=<type>]
                         [--verbose] [--debug]
 

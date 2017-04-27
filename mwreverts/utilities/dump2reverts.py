@@ -6,7 +6,7 @@ r"""
 
     Usage:
         dump2reverts (-h|--help)
-        dump2reverts [<input-file>...] [--radius=<num>] [--use-sha1]
+        dump2reverts [<input-file>...] [--radius=<num>] [--use-sha1] [--resort]
                      [--threads=<num>] [--output=<path>] [--compress=<type>]
                      [--verbose] [--debug]
 

@@ -6,7 +6,7 @@ r"""
 
     Usage:
         dump2reverts (-h|--help)
-        dump2reverts [<input-file>...] [--radius=<num>] [--use-sha1]
+        dump2reverts [<input-file>...] [--radius=<num>] [--use-sha1] [--resort]
                      [--threads=<num>] [--output=<path>] [--compress=<type>]
                      [--verbose] [--debug]
 
@@ -18,6 +18,8 @@ r"""
                             reference. [default: 15]
         --use-sha1          Use the sha1 field even if a text field is
                             available.
+        --resort            Re-sort the revisions within a page by timestamp
+                            and rev_id.
         --threads=<num>     If a collection of files are provided, how many
                             processor threads? [default: <cpu_count>]
         --output=<path>     Write output to a directory with one output file

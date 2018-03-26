@@ -1,5 +1,5 @@
 r"""
-``$ mwpersistence dump2reverts -h``
+``$ mwreverts dump2reverts -h``
 ::
 
     Extracts reverts from an XML dump.

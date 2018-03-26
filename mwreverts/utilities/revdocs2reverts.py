@@ -1,5 +1,5 @@
 """
-``$ mwpersistence revdocs2reverts -h``
+``$ mwreverts revdocs2reverts -h``
 ::
 
     Extracts reverts from a page-partitioned sequence of JSON revision
